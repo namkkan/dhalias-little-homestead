@@ -62,11 +62,11 @@ function drawNav(){
 function home(){
  let remaining=data.projects.filter(function(p){return !p.done});
  let recent=data.journal[data.journal.length-1];
- return '<section class="hero"><img class="hero-image" src="assets/clearing.svg" alt="Cabañita rústica junto a árboles, bancales, arroyo y Kitt en un claro del bosque"><div class="hero-overlay"></div><div class="hero-content"><span class="eyebrow">✦ Una nueva vida en Asteria</span><h1>Un hogar entre<br>raíces y estrellas.</h1><p>Una cabaña hecha a mano. Un huerto que crece con magia. Y Kitt, que siempre está cerca cuando hay fresas.</p><span class="hero-stamp">❧ Nuestro pequeño claro · Año 742</span></div></section>'+
+ return '<section class="hero"><img class="hero-image" src="assets/scene.jpg" onerror="this.onerror=null;this.src='assets/clearing.svg'" alt="Cabañita rústica junto a árboles, bancales, arroyo y Kitt en un claro del bosque"><div class="hero-overlay"></div><div class="hero-content"><span class="eyebrow">✦ Una nueva vida en Asteria</span><h1>Un hogar entre<br>raíces y estrellas.</h1><p>Una cabaña hecha a mano. Un huerto que crece con magia. Y Kitt, que siempre está cerca cuando hay fresas.</p><span class="hero-stamp">❧ Nuestro pequeño claro · Año 742</span></div></section>'+
  '<div class="feature-strip"><div class="feature"><strong>🌱 '+data.crops.length+' cultivos</strong><span>Nuestro huerto encantado</span></div><div class="feature"><strong>🪙 '+esc(data.coins)+' platas</strong><span>Ahorros para la aventura</span></div><div class="feature"><strong>📜 '+data.journal.length+' recuerdos</strong><span>Páginas del diario</span></div></div>'+
- '<h2 class="section-title">Rincones de nuestro hogar</h2><div class="grid">'+
+ '<h2 class="section-title">Rincones de nuestro hogar</h2><div class="storybook-portrait"><img src="assets/dhalia.jpg" onerror="this.onerror=null;this.style.display='none'" alt="Retrato ilustrado de Dhalia"><div><span class="eyebrow">Nuestra protagonista</span><h3>Dhalia, entre semillas y sueños</h3><p>Una joven que empieza de nuevo en Asteria. Sus manos construyen un hogar; su magia ayuda a florecer el huerto.</p></div></div><div class="grid">'+
  '<section class="card wide art-card"><img src="assets/botanical.svg" alt="Ilustración botánica de fresas y flores"><div class="art-card-content"><span class="tiny">I · El huerto</span><h3>Un milagro entre los bancales</h3><p>Zanahorias, lechugas, tomates y nuestro fresal. Aquí cada planta tiene una historia.</p>'+button('Visitar el huerto','data-go="garden"',true)+'</div></section>'+
- '<section class="card kitt-card"><img src="assets/kitt.svg" alt="Kitt, zorro crema con flor azul"><div><span class="tiny">II · Compañero</span><h3>Kitt</h3><p>Curioso, dormilón y fan absoluto de las fresas. Su flor azul reacciona a la magia.</p><span class="pill">♡ Muy querido</span></div></section>'+
+ '<section class="card kitt-card"><img src="assets/kitt.jpg" onerror="this.onerror=null;this.src='assets/kitt.svg'" alt="Kitt, zorro crema con flor azul"><div><span class="tiny">II · Compañero</span><h3>Kitt</h3><p>Curioso, dormilón y fan absoluto de las fresas. Su flor azul reacciona a la magia.</p><span class="pill">♡ Muy querido</span></div></section>'+
  '<section class="card"><span class="tiny">III · Colecciones</span><h3>Pequeños tesoros</h3><img class="inventory-visual" src="assets/crystals.svg" alt="Cristales verdes azulados"><p>Minerales del arroyo, geodas y piedras expuestas en sus cestas.</p>'+button('Ver inventario','data-go="inventory"',true)+'</section>'+
  card('✎ La última aventura','<span class="tiny">Día '+esc(recent.day)+'</span><h3>'+esc(recent.title)+'</h3><p>'+esc(recent.body.slice(0,225))+'…</p>'+button('Leer diario','data-go="journal"',true),'wide')+
  card('❧ Los próximos planes',remaining.slice(0,4).map(function(p){return '<div class="record">'+esc(p.name)+'</div>'}).join('')+'<div style="margin-top:15px">'+button('Abrir proyectos','data-go="craft"',true)+'</div>')+'</div>'
@@ -76,7 +76,7 @@ function journal(){
  '<div class="actions">'+button('＋ Escribir una entrada','data-add="journal"')+button('☼ Avanzar un día','data-add="day"',true)+'</div>'+
  '<div class="grid"><section class="card wide"><div class="tiny">Nuestro libro de recuerdos</div>'+
  data.journal.slice().reverse().map(function(e){return '<article class="entry"><time>Día '+esc(e.day)+' · '+esc(data.season)+' · '+esc(data.year)+'</time><h3>'+esc(e.title)+'</h3><p>'+esc(e.body)+'</p></article>'}).join('')+
- '</section><section class="card"><img class="inventory-visual" style="max-height:220px" src="assets/kitt.svg" alt="Ilustración de Kitt"><h3>Un cuento compartido</h3><p>Cada nueva entrada se queda guardada en tu navegador, como una página de tu propio diario de campo.</p></section></div>'
+ '</section><section class="card"><img class="inventory-visual" style="max-height:220px" src="assets/kitt.jpg" onerror="this.onerror=null;this.src='assets/kitt.svg'" alt="Ilustración de Kitt"><h3>Un cuento compartido</h3><p>Cada nueva entrada se queda guardada en tu navegador, como una página de tu propio diario de campo.</p></section></div>'
 }
 function garden(){
  return header('El huerto encantado','Una semilla, un poquito de agua y la afinidad vegetal de Dhalia. Registra el estado de tus cultivos.')+
@@ -108,7 +108,7 @@ function craft(){
 }
 function world(){
  return header('El mundo de Asteria','El claro está lleno de pequeños secretos. Algunos lugares ya son familiares; otros todavía nos esperan.')+
- '<div class="map-wrap"><img class="map-art" src="assets/clearing.svg" alt="Vista ilustrada de la cabaña, el huerto, el arroyo, frutales y bosque">'+
+ '<div class="map-wrap"><img class="map-art" src="assets/scene.jpg" onerror="this.onerror=null;this.src='assets/clearing.svg'" alt="Vista ilustrada de la cabaña, el huerto, el arroyo, frutales y bosque">'+
  '<span class="map-label" style="top:31%;left:45%">🏡 Cabaña</span><span class="map-label" style="top:72%;left:19%">🥕 Huerto</span><span class="map-label" style="top:70%;right:2%">💧 Arroyo</span><span class="map-label" style="top:42%;left:7%">🍎 Frutales</span></div>'+
  '<p class="map-note">Mapa artístico del claro, no un plano a escala.</p><div class="grid" style="margin-top:20px">'+
  card('🌳 El claro','<p>Una parcela en el bosque con cabaña hecha a mano, huerto, horno, hoguera y árboles frutales.</p>')+
